@@ -42,7 +42,10 @@ async function listMustWatch() {
     let result = await moviesModel.find({
         "metascore": {
             $gt:70
-        }
+        },
+    }, {
+        "_id": 0,
+        "__v": 0 
     }, (err, res) => {
         if(err) throw err;
         else console.log(`${res.length} must watch movies in list.`)
@@ -64,7 +67,12 @@ async function getRandomMustWatch() {
 async function getListMovies() {
     console.log('Listing all movies...');
 
-    let movies = await moviesModel.find({}, (err, res) => {
+    let movies = await moviesModel.find({},
+        {
+            "_id": 0,
+            "__v": 0 
+        },
+        (err, res) => {
         if(err) throw err;
         else console.log(`${res.length} movies in list.`);
     });
@@ -78,6 +86,9 @@ async function getMovie(id) {
 
     let movie = await moviesModel.find({
         "id": id
+    },{
+        "_id": 0,
+        "__v": 0 
     },
     (err, res) => {
         if(err) throw err;
@@ -94,7 +105,11 @@ async function searchMovie(limit, metascore) {
         "metascore": {
             $gte: metascore
         }
-    }, (err, res) => {
+    },{
+        "_id": 0,
+        "__v": 0 
+    },
+    (err, res) => {
         if(err) throw err;
         else console.log(res.length + " movies found.");
     }).limit(limit);

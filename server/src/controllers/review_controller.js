@@ -30,6 +30,10 @@ async function getReviewsById(id) {
     let reviews = await reviewModel.find({
         "movie_id": id
     },
+    {
+        "_id": 0,
+        "__v": 0 
+    },
     (err, res) => {
         if(err) throw err;
         else console.log(`${res.length} reviews found.`);
@@ -42,6 +46,9 @@ async function getReviewsByIdAndUsername(id, username) {
     let reviews = await reviewModel.find({
         "movie_id": id,
         "username": username
+    },{
+        "_id": 0,
+        "__v": 0 
     },
     (err, res) => {
         if(err) throw err;

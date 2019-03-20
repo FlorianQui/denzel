@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+//import './App.css';
 
-import MovieCard from './components/MovieCard/MovieCard'
+import ListMovies from './components/ListMovies/ListMovies'
 
 class App extends Component {
   render() {
     return (
-      <MovieCard/>
+      <ListMovies/>
     );
   }
 }
