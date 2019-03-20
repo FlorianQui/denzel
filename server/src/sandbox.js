@@ -1,5 +1,5 @@
 /* eslint-disable no-console, no-process-exit */
-const imdb = require('./src/imdb');
+const imdb = require('./imdb');
 const DENZEL_IMDB_ID = 'nm0000243';
 
 async function getMoviesList (actor) {
