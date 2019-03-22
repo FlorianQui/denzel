@@ -1,8 +1,11 @@
 //MONGODB
 var mongoose = require('mongoose')
 
-const mongoURL = 'mongodb://localhost/denzel';
-mongoose.connect(mongoURL, { useNewUrlParser: true });
+const mongoURL = 'mongodb://mongo:27017/denzel';
+mongoose.connect(mongoURL, { useNewUrlParser: true }, (err) => {
+    if(err) console.log(err);
+    else console.log("CONNECTED TO DB");
+});
 mongoose.Promise = global.Promise;
 
 var db = mongoose.connection;

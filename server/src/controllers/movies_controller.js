@@ -1,8 +1,11 @@
 //MONGODB
 var mongoose = require('mongoose')
 
-const mongoURL = 'mongodb://localhost/denzel';
-mongoose.connect(mongoURL, { useNewUrlParser: true });
+const mongoURL = 'mongodb://mongo:27017/denzel';
+mongoose.connect(mongoURL, { useNewUrlParser: true }, (err) => {
+    if(err) console.log(err);
+    else console.log("CONNECTED TO DB");
+});
 mongoose.Promise = global.Promise;
 
 var db = mongoose.connection;
@@ -31,6 +34,7 @@ async function saveMovies() {
 
 async function loadMovies() {
     console.log('Loading movies...');
+
 
     movies = await moviesSandbox;
     LOADED = true;
@@ -67,17 +71,20 @@ async function getRandomMustWatch() {
 async function getListMovies() {
     console.log('Listing all movies...');
 
-    let movies = await moviesModel.find({},
-        {
-            "_id": 0,
-            "__v": 0 
-        },
-        (err, res) => {
-        if(err) throw err;
-        else console.log(`${res.length} movies in list.`);
-    });
-
-    return movies;
+    try {
+        let movies = await moviesModel.find({},
+            {
+                "_id": 0,
+                "__v": 0 
+            },
+            (err, res) => {
+            if(err) throw err;
+            else console.log(`${res.length} movies in list.`);
+        });
+        return movies;
+    } catch (error) {
+        throw error;
+    }
 }
 
 async function getMovie(id) {

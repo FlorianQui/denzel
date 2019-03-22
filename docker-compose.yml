@@ -1,0 +1,26 @@
+version: '2'
+services:
+    client:
+        build: ./client/denzel_client/
+        container_name: client
+        restart: always
+        ports:
+            - "3000:3000"
+
+    api:
+        build: ./server/
+        container_name: api
+        restart: always
+        ports:
+            - "9293:9293"
+        links:
+            - mongo
+
+    mongo:
+        image: mongo
+        restart: always
+        container_name: mongo
+        volumes:
+            - ./server/data:/data/db
+        ports:
+            - "27017:27017"

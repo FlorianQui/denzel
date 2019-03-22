@@ -8,4 +8,4 @@ var reviewSchema = new Schema({
     movie_id: String
 });
 
-module.exports = mongoose.model('Review', reviewSchema, 'review');
+module.exports = mongoose.model('Review', reviewSchema, 'reviews');

@@ -21,24 +21,22 @@ class ListMovies extends Component {
 
         this.setState({listMovies: list.data});
     }
-
+ 
     moviesComponents() {
         let listMovies = this.state.listMovies;
 
         let compenents = listMovies.map((movie, index) => {
            return (
-            <li>
+            <li key={index}>
                 <MovieCard movie_id={movie.id}/>
             </li>
            );
         });
 
         return ( 
-        <div className="list">
             <ul>
                 {compenents}
             </ul>
-        </div>
         );
     }
 
