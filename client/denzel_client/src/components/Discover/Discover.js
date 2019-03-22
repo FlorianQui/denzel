@@ -13,7 +13,7 @@ class Discover extends Component {
     }
 
     async componentDidMount() {
-        let URL = 'http://localhost:9293/movies/discover';
+        let URL = 'http://localhost:9292/movies/discover';
         let movie = await axios.get(URL);
 
         this.setState({discover: movie.data});

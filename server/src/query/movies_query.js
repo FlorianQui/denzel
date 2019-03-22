@@ -51,8 +51,9 @@ const populate = {
     type: GraphQLString,
 
     resolve: async () => {
-        await saveMovies();
-        return "ok"
+        let result = "false";
+        if (await saveMovies().populate) result = "true";
+        return result;
     }
 };
 

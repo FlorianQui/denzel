@@ -12,7 +12,7 @@ services:
         container_name: api
         restart: always
         ports:
-            - "9293:9293"
+            - "9292:9292"
         links:
             - mongo
 

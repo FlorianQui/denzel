@@ -16,7 +16,7 @@ class ListMovies extends Component {
     }
 
     async componentDidMount() {
-        let URL = 'http://localhost:9293/movies/';
+        let URL = 'http://localhost:9292/movies/';
         let list = await axios.get(URL);
 
         this.setState({listMovies: list.data});

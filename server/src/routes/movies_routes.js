@@ -15,7 +15,7 @@ router.get('/', async function (req, res) {
 });
 
 router.get('/populate', async function (req, res) {
-    res.send(await saveMovies())
+    res.send(await saveMovies());
 });
 
 router.get('/must_watch', async function (req, res) {

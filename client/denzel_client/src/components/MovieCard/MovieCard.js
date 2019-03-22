@@ -43,7 +43,7 @@ class MovieCard extends Component {
     }
 
     async componentDidMount() {
-        let URL = 'http://localhost:9293/movies/' + this.props.movie_id
+        let URL = 'http://localhost:9292/movies/' + this.props.movie_id
         let movie = await axios.get(URL);
         console.log(movie.data)
         this.setState({movie: movie.data[0]});

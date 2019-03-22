@@ -24,12 +24,24 @@ async function saveMovies() {
     
     if( !LOADED  ) await loadMovies();
 
-    var total = await moviesModel.insertMany(movies);
-
-    return { 
-        "total": total.length,
-        "result": "ok" 
+    var response = {
+        "total": 0,
+        "populate": false,
+        "error": ""
     };
+
+    try {
+        var total = await moviesModel.insertMany(movies);
+
+        response.total = total.length;
+        response.populate = true;
+
+    } catch (error) {
+        console.log(error);
+        response.error = error.errmsg;
+    }
+
+    return response;
 }
 
 async function loadMovies() {

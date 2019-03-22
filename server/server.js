@@ -13,7 +13,7 @@ const { reviewQueryType } = require('./src/query/review_query');
 
 const schema = new GraphQLSchema({ query: queryType });
 
-const PORT = 9293;
+const PORT = 9292;
 
 const corsOptions = {
     "origin": "*",
@@ -30,7 +30,7 @@ app.use('/movies', moviesRoutes);
 
 app.use('/graphql', graphqlHTTP({
     schema: schema,
-    graphiql: true
+    graphiql: false
 }));
 
 app.listen(PORT, () => {
